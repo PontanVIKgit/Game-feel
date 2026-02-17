@@ -44,6 +44,6 @@ public class Weapon : MonoBehaviour
     {
 
         Rigidbody2D bulletRb = Instantiate(bullet, muzzle.position, gun.transform.rotation);
-        bulletRb.linearVelocity = bulletRb.transform.right * 10;
+        bulletRb.linearVelocity = bulletRb.transform.right * 20;
     }
 }
