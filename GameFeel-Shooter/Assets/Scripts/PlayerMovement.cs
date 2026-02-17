@@ -8,10 +8,13 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] SpriteRenderer playerSprite;
     Vector2 bounds;
 
+    Animator animator;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
         bounds = new Vector2(Camera.main.orthographicSize * Camera.main.aspect, Camera.main.orthographicSize);
     }
 
@@ -47,6 +50,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
             rb.linearVelocity = dir.normalized * movementSpeed;
+
+        if(animator != null)
+        {
+            if(dir != Vector2.zero)
+            {
+                animator.Play("walk");
+            }
+            else
+            {
+                animator.Play("idle");
+            }
+        }
 
     }
 }
